@@ -1,0 +1,103 @@
+This is a quickstart guide of how to get the program to work on a LINUX based computer. Please make sure to read every line in this text file.
+
+Make sure you are using some version of Linux, it was tested on both Ubuntu and Linux Mint. Some of the terminal commands may be different based on the distro used, but shouldn't effect if it works or not. This has not been tested on Windows, so the following guide will not work if you use Windows. You also need a mouse, keyboard, and an internet connection to get started. 
+
+I included the script to type into the terminal. Do not type the '$' when you type in the script (it is only there to distinguish when the script starts).
+
+Any questions or concerns about the program or anything related to project can be sent to the email listed at the bottom of this text file.
+
+PLEASE NOTE: TensorFlow is known to have memory leak issues, and requires more RAM than usual. I highly recommend a dedicated GPU and the fastest RAM possible for the best performance. The test build is as follows:
+
+	CPU: AMD FX-8320 Eight Core Processor (Max frequency is 3.5 Ghz)
+	GPU: GTX 970 
+	RAM: 32Gb @ 1333 MHz
+	Storage: 1Tb HDD
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Once the OS is installed, there are some things you need to install from the terminal:
+
+	1. Install any updates
+
+		$ sudo apt-get update
+		$ sudo apt-get dist-upgrade
+
+	2. Install Python
+
+		$ sudo apt-get install python3
+
+	3. Install TensorFlow (IMPORTANT: A DEDICATED GPU IS RECOMMENDED!!!)
+
+		$ pip install --upgrade pip
+		$ pip install tensorflow
+
+		It is worth noting here that TensorFlow requires a computation power of 3.5+, you can see the computation capability of an Nvidia GPU here:
+
+		https://developer.nvidia.com/cuda-gpus
+
+		This was tested on both an Nvidia Jetson Nano and an Nvidia GTX 970. Performance was a lot better with a dedicated GPU and faster RAM, but the test computer is also 10 years old.
+
+	4. Install Numpy
+
+		$ pip intall numpy
+
+	5. Install OpenCV using Python
+
+		$ sudo apt-get install python3-opencv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+After this everything is installed to run the program! Now onto running it:
+
+	1. Download the files from the USB drive into a folder, for example the folder name J130
+
+	2. Open terminal and type the following commands
+
+		$ cd J130
+		$ python3 LTU_AI.py
+
+This should take a minute or so (depending on the system it is running on), then a small window will appear. Maximize it like you would in windows. While OpenCV allows the user to open images and videos, you cannot full-screen like you can with applications in windows. 
+
+IF YOU WANT TO EXIT THE PROGRAM, PRESS THE LETTER Q ON A KEYBOARD OR CLOSE THE TERMINAL! THIS IS THE ONLY WAY TO SAFELY EXIT THE PROGRAM!
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+If you want to change some parameters, for example you want to change the resolution of the display, or output less items here are what some of the main variables are in LTU_AI.py
+
+Once LTU_AI is opened with the text editor of choice, scroll all the way to the bottom and you will see the following:
+
+	1. modelURL	
+
+		This determins what model you want to use. You need internet access to download the models from the github repository. I included the two fastest models available which are SSD Mobilenet (320x320). The one that is used by default runs faster, but they are comparable. 
+
+		Find more models at the ModelZoo GitHub repository: 
+		https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md 
+
+		If you are trying to install a new model, right click on the link for whichever model you want, right-click the your choice and copy the link into the quotation marks. The link should look similar to the other models in the code. It will only download once, so internet access is only necessary the first time the model is used.  
+
+	2. classFile 
+
+		Contains the text file contatining all of the items the AI can detect. If you install a new model that uses a different set of items, you can update it by simply changing the name of the text file. THIS REQUIRES A NEW MODEL OUTSIDE OF MODELZOO, YOU CANNOT CHANGE THE TEXT FILE AND EXPECT IT TO RECOGNIZE NEW ITEMS.
+
+	3. videoPath 
+
+		Tells the program which camera to use, it is set to 0 by default. This means it takes /dev/0, which is a USB camera. I have not connected two cameras at once, so stick to one and keep this variable zero. 
+
+	4. resWidth and resHeight 
+
+		The resolution settings for the camera. The lower the resolution, the better the performance. Here is a short list of resolutions I have tested:
+
+		1920x1080
+		1280x720
+		720x480
+
+	 	When you maximize the window, the resolution will scale to however big the screen is. So if you have a low resolution, on a big screen it will look more pixelated. 
+
+	5. threshold
+		A proability cutoff setting. It is set to 0.5 by default. This means anything that the AI detects with a probability of less than 50% is not shown. You can change this to whatever you want, but if it is too low the system will crash. I HAVE NOT TESTED THIS WITH LARGE GROUPS OF PEOPLE, SO I DO NOT KNOW WHAT WILL HAPPEN IF 15 PEOPLE ARE IN FRONT OF THE CAMERA!
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+I appreciate your interest in my project! I am excited to have something I made displayed after all these years of studying, debugging, and researching. It is definitely cool to see my hard work pay off. If you have any questions or concerns, please let me know. I will put my personal email below in case my LTU email is deleted (or if I forget to check it since I am graduating). I plan on continuing to pursue my Masters in Artifiical Intelligence, so there is a chance this program can be exchanged for a new one in enough time. Thank you again for your interest!
+
+																			jacobwisdomm@gmail.com
